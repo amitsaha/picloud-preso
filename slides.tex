@@ -1,0 +1,213 @@
+\documentclass{beamer} \usepackage{fancyvrb} \usepackage{listings}
+\usepackage{color} \usepackage{caption}
+
+\mode<presentation>  
+    { 
+
+      \usetheme{CambridgeUS}}
+      \usepackage[english]{babel} \usepackage[latin1]{inputenc}
+
+      \usepackage{times} \usepackage[T1]{fontenc}
+
+      \title{PiCloud: Cloud Computing Simplified}
+
+      \subtitle{A hands-on quick overview}
+
+      \author{Amit Saha \\ PyCon Australia'12 \\ @echorand \\ }
+      
+
+      %\date {October 1, 2009/ LFY}
+
+      \begin{document}
+
+      \begin{frame}
+        \titlepage
+      \end{frame}
+
+      \begin{frame}{About Me}
+        \begin{itemize}
+        \item PiCloud (and Python) enthusiast
+        \item Freelance Technical Writer
+        \item Fedora project contributor: Scientific Spin, Google Summer
+          of Code, etc.
+        \item Blog: \url{http://echorand.me}
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{Outline}
+        \tableofcontents
+      \end{frame}
+
+
+      \section{Introduction}
+
+      \begin{frame}{What is PiCloud?}
+        \begin{itemize}
+        \item Cloud Computing solution
+        \item Primarily acessible via Python library:
+          \textcolor{blue}{import cloud}
+        \item Commercial offering, but has 20 free core hours/month for
+          all
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{Key Features}
+        \begin{itemize}
+        \item \textbf{Automated Deployment:} Your code (alongwith
+          modules) magically transported
+        \item \textbf{Choice of computing power}: Cores of different
+          capabilities
+        \item \textbf{Scientific Computing ready}: SciPy and NumPy
+          (others can be installed)
+        \item REST APIs, Environments, Cron Jobs, S3 Storage ..
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{Easy Setup}
+        \begin{itemize}
+        \item Register at
+          \url{https://www.picloud.com/accounts/register/}
+        \item \textcolor{blue}{\$sudo pip-python install cloud}
+        \item \textcolor{blue}{\$ picloud setup} (Your email address)
+        \item Gives you an API key (keep it safe)
+        \end{itemize}
+
+      \end{frame}
+
+      \begin{frame}{Sanity check}
+        \centering(IPython notebook available in the slide repository)
+        \input{pylang.tex}
+        \lstinputlisting[language=Python]{code/sanity.py}
+      \end{frame}
+
+      \begin{frame}{Sanity Check: Demo}
+        \begin{center}
+          \textcolor{blue}{DEMO}
+        \end{center}
+      \end{frame}
+      
+
+      \section{Using PiCloud}
+      %\tiny \centering(IPython notebook available in the slide repository)
+      \begin{frame}{Sorting in the Cloud}
+        \input{pylang.tex}
+        \lstinputlisting[language=Python]{code/sort.py}
+      \end{frame}
+
+
+      \section{PiCloud Features}
+
+      \begin{frame}{Moving persistent data}
+        \begin{itemize}
+        \item \textcolor{blue}{cloud.files} module
+        \item Store a file: \textcolor{blue}{cloud.files.put()}
+        \item Retrieve a file: \textcolor{blue}{cloud.files.get()}
+        \item List all files: \textcolor{blue}{cloud.files.list()}
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{Persistent data demo}
+        \input{pylang.tex} \lstinputlisting[language=Python]{code/filedemo.py}
+      \end{frame}
+
+      \begin{frame}{Evolutionary Algorithms in the Cloud}
+        \begin{itemize}
+        \item \textcolor{red}{Pyevolve}: Python Evolutionary Algorithm library
+        \item More than one ways to parallelize
+        \item Execute the algorithm on PiCloud infrastructure
+        \item For more information:
+          \url{http://pyevolve.sourceforge.net/}
+          
+        \end{itemize}
+      \end{frame}
+      
+      \begin{frame}{Pyevolve + PiCloud}
+        \input{pylang.tex} \lstinputlisting[language=Python]{code/ea.py}
+      \end{frame}
+
+      \begin{frame}{Automatic Deployment + Moving files}
+        \begin{center}
+          \textcolor{blue}{DEMO}
+        \end{center}
+      \end{frame}
+
+
+
+      \begin{frame}{REST API}
+        \begin{itemize}
+        \item Publish your functions via a \textcolor{red}{REST API}
+        \item Language independent access to your Python functions
+        \item Most of the cloud library functions have REST analogs
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{REST API: Publishing a function}
+        \input{pylang.tex}
+        \lstinputlisting[language=Python]{code/square_rest.py}
+      \end{frame}
+
+      \begin{frame}{REST API: Invoking the published functions}
+        \begin{itemize}
+        \item Using the end-point, first get the job ID
+        \item Use this Job ID to get the result
+        \item Appropriate requests can be made using \textcolor{red}{curl} or any other
+          client capable of invoking REST APIs
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}{Environments}
+        \begin{itemize}
+        \item Non-Python software packages
+        \item Python libraries with native-dependencies (not already
+          installed)
+        \item Your personal sandbox in PiCloud (based on Ubuntu Linux)
+        \item Specify environment to execute your code in
+        \end{itemize}
+      \end{frame}
+
+
+      \begin{frame}{Job Monitoring and Management}
+        \begin{itemize}
+        \item Get information about a job:
+          \textcolor{blue}{cloud.info()}
+        \item Kill, Delete jobs {\textcolor{blue}{cloud.kill(),
+            cloud.delete()}}
+        \item Web interface has functions for managing your jobs,
+          crons, analytics, payment ..
+        \item Manage your account using
+          \textcolor{blue}{cloud.account} module
+        \end{itemize}
+
+      \end{frame}
+
+
+      \section{Ending notes}
+
+      \begin{frame}{Summarize}
+        \begin{itemize}
+        \item A truly simple way to harness and play around with cloud
+          computing
+        \item Code is there to explore
+        \item Simulator to help you test your code
+        \item Just go ahead and \textcolor{blue}{import cloud}!
+        \end{itemize}
+
+      \end{frame}
+      
+      \begin{frame}{Resources}
+        \begin{itemize}
+        \item PiCloud Pitfalls:
+          \url{http://docs.picloud.com/client_pitfall.html}
+        \item PiCloud Homepage: \url{http://www.picloud.com}
+        \item PiCloud Documentation: \url{http://docs.picloud.com/}
+        \item PiCloud FAQ: \url{http://www.picloud.com/faq/}
+        \item PiCloud: An Easy Way to the Cloud:
+          \url{http://bit.ly/GZDxZB}
+        \item Presentation and Code:
+          \url{https://github.com/amitsaha/picloud-preso}
+        \end{itemize}
+      \end{frame}
+
+      \end{document}
+
+
