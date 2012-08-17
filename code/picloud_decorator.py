@@ -5,18 +5,8 @@ def cloudcall(func):
     def sendtocloud(*args, **kwargs):
         import cloud
         jid = cloud.call(func,*args,**kwargs)
-        
-        while True:
-            # blocking
-            # You could just use a callback function here
-            # http://docs.picloud.com/client_adv.html#callbacks
-            status = cloud.status(jid)
-            if status == 'done':
-                print '{0:s} :: Done   '.format(func.__name__, str(jid))
-                print '{0:s} :: Result {1:s}'.format(func.__name__, str(cloud.result(jid)))
-                break
-            else:
-                print '{0:s} :: {1:s}'.format(func.__name__,status)
+        cloud.join(jid)
+        print 'Result:: ', cloud.result(jid)
 
     return sendtocloud
 

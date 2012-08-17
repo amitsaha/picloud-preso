@@ -1,5 +1,4 @@
 import cloud
- 
 def savedata():
     f=open('data.txt','w')
     f.write('This is a line of text')
@@ -8,9 +7,11 @@ def savedata():
     cloud.files.put('data.txt')
 
 # Interpreter session:
-
-# >>> from filedemo import *
-# >>> cloud.call(savedata)
-# >>> cloud.files.list()
-# [u'data.txt', u'stats_1.csv']
-# >>> cloud.files.get('data.txt')
+# In [7]: import cloud
+# In [8]: cloud.files.list()
+# Out[8]: []
+# In [9]: from picloud_filedemo import *
+# In [10]: cloud.call(savedata)
+# Out[10]: 107
+# In [11]: cloud.files.list()
+# Out[11]: [u'data.txt']
